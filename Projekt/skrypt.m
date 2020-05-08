@@ -21,7 +21,7 @@ win_area = win_num * win_height * win_width;
 
 
 % wall area 
-wall_area = 2 * length * height + 2 * width * height - win_area;
+wall_area = 2 * length * height + 2 * width * height + 2 * length * width  - win_area;
 
        
 % wall resistance            
@@ -41,7 +41,7 @@ win_res = win_d /(win_lambda * 3600 * win_area);
 % Heat flux density q [W/m^2]
 % q = U(Ti-Te)   U - material conductivity [W/(K*m^2)])
 
-% whole resistance 
+%convective heat transfer  
 U = 1/win_res + 1/wall_res; 
 
 %density of air [kg/m^3]

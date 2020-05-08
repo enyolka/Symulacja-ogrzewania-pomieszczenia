@@ -1,12 +1,12 @@
 Model {
   Name			  "model"
   Version		  10.0
-  SavedCharacterEncoding  "ISO-8859-2"
+  SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.17"
+    ComputedModelVersion    "1.18"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -31,9 +31,9 @@ Model {
   WebScopes_FoundationPlugin "on"
   DiagnosticSuppressor	  "on"
   AnimationPlugin	  "on"
+  LogicAnalyzerPlugin	  "on"
   SLCCPlugin		  "on"
   NotesPlugin		  "on"
-  LogicAnalyzerPlugin	  "on"
   EnableAccessToBaseWorkspace on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -44,7 +44,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "maci64"
+  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -54,7 +54,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [145.0, 36.0, 1004.0, 725.0]
+      Location		      [578.0, 165.0, 1004.0, 725.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -70,7 +70,7 @@ Model {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[0]
+	Visible			[1]
       }
       Array {
 	Type			"Simulink.EditorInfo"
@@ -81,10 +81,10 @@ Model {
 	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [890.0, 526.0]
+	  Extents		  [904.0, 491.0]
 	  ZoomFactor		  [1.0]
-	  Offset		  [-48.739583333334394, -88.750000000000455]
-	  SceneRectInView	  [-48.739583333334394, -88.750000000000455, 890.0, 526.0]
+	  Offset		  [-110.40625, -1.25]
+	  SceneRectInView	  [-110.40625, -1.25, 904.0, 491.0]
 	}
 	Object {
 	  $ObjectID		  6
@@ -116,9 +116,9 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABrAAf//wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABiAAf//wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOgAAACLQAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOuAAACKAAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIATABlAGYAdAMAAAAA/////wAAAAAAAAAAAAAAAQAAAAEAAAA4AGMAbwBsAGwAYQBwAHMAaQBiA"
       "GwAZQBQAGEAbgBlAGwAVABvAG8AbABCAGEAcgBSAGkAZwBoAHQDAAAAAP////8AAAAAAAAAAAAAAAMAAAABAAAAOgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIAQgBvAHQAdABvAG0AAAAAAP////8AAAAAAAAAAA=="
@@ -136,11 +136,11 @@ Model {
   Creator		  "emilia"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "Weronika"
+  LastModifiedBy	  "emilia"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri May 08 11:55:59 2020"
-  RTWModifiedTimeStamp	  510839739
-  ModelVersionFormat	  "1.%<AutoIncrement:17>"
+  LastModifiedDate	  "Fri May 08 13:59:55 2020"
+  RTWModifiedTimeStamp	  510846945
+  ModelVersionFormat	  "1.%<AutoIncrement:18>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1245,7 +1245,7 @@ Model {
   }
   System {
     Name		    "model"
-    Location		    [145, 36, 1149, 761]
+    Location		    [578, 165, 1582, 890]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1262,7 +1262,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "38"
+    SIDHighWatermark	    "39"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Gain
@@ -1848,6 +1848,33 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "scope_power"
+      SID		      "39"
+      Ports		      [1]
+      Position		      [720, 149, 750, 181]
+      ZOrder		      336
+      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
+      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
+      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain"
+      "',true,'SerializedDisplays',{struct('MinYLimReal','59604646.12321','MaxYLimReal','150306695.16502','YLabelReal',"
+      "'','MinYLimMag','59604646.12321','MaxYLimMag','150306695.16502','LegendVisibility','off','XGrid',true,'YGrid',tr"
+      "ue,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.6862745098039"
+      "22],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.1607843137"
+      "2549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.058823529411"
+      "7647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefine"
+      "dChannelNames',{{}},'NumLines',1,'LineNames',{{'HeatGain'}},'ShowContent',true,'Placement',1)},'DisplayPropertyD"
+      "efaults',struct('MinYLimReal','59604646.12321','MaxYLimReal','150306695.16502','YLabelReal','','MinYLimMag','596"
+      "04646.12321','MaxYLimMag','150306695.16502','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',fa"
+      "lse,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0."
+      "0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.7176470588235"
+      "29 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098"
+      "039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools'"
+      ",'Measurements',true,'Version','2019b')),'Version','2019b','Position',[1190 268 610 420])"
+      NumInputPorts	      "1"
+      Floating		      off
+    }
+    Block {
+      BlockType		      Scope
       Name		      "scope_temp"
       SID		      "36"
       Ports		      [2]
@@ -1925,8 +1952,18 @@ Model {
       ZOrder		      26
       SrcBlock		      "HeatGain"
       SrcPort		      1
-      DstBlock		      "Product"
-      DstPort		      2
+      Points		      [0, 0]
+      Branch {
+	ZOrder			182
+	DstBlock		"Product"
+	DstPort			2
+      }
+      Branch {
+	ZOrder			181
+	Points			[0, 50]
+	DstBlock		"scope_power"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      163
@@ -2027,6 +2064,9 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
+    visible		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    6
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

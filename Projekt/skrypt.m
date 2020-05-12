@@ -1,5 +1,5 @@
 % Room dimensions
-
+init_temp = 0;
 %length [m]
 length = 8;
 %width [m]

@@ -60,7 +60,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [485.0, 27.0, 1004.0, 717.0]
+      Location		      [276.0, 23.0, 1004.0, 717.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -88,9 +88,9 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [890.0, 518.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-261.64814034104347, -18.25]
-	  SceneRectInView	  [-261.64814034104347, -18.25, 890.0, 518.0]
+	  ZoomFactor		  [0.85630906896175307]
+	  Offset		  [-304.77342140528509, -51.635911460686287]
+	  SceneRectInView	  [-304.77342140528509, -51.635911460686287, 1039.3443585492982, 604.92177272869264]
 	}
 	Object {
 	  $ObjectID		  6
@@ -144,7 +144,7 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Weronika"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu May 14 12:04:34 2020"
+  LastModifiedDate	  "Thu May 14 12:14:13 2020"
   RTWModifiedTimeStamp	  511358673
   ModelVersionFormat	  "1.%<AutoIncrement:22>"
   SampleTimeColors	  on
@@ -1298,7 +1298,7 @@ Model {
   }
   System {
     Name		    "model"
-    Location		    [485, 27, 1489, 744]
+    Location		    [276, 23, 1280, 740]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1313,7 +1313,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "86"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "99"
     SimulinkSubDomain	    "Simulink"

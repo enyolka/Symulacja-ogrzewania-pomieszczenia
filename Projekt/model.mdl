@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.25"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -85,23 +85,23 @@ Model {
 	  $ObjectID		  5
 	  IsActive		  [1]
 	  IsTabbed		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "76"
-	  Extents		  [904.0, 483.0]
-	  ZoomFactor		  [0.96999999999999986]
-	  Offset		  [186.52061855670098, 45.046391752577279]
-	  SceneRectInView	  [186.52061855670098, 45.046391752577279, 931.958762886598, 497.938144329897]
-	}
-	Object {
-	  $ObjectID		  6
-	  IsActive		  [0]
-	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [904.0, 483.0]
 	  ZoomFactor		  [0.79845034808595894]
 	  Offset		  [-329.12407612639436, -60.345754957013355]
 	  SceneRectInView	  [-329.12407612639436, -60.345754957013355, 1132.1931315667457, 604.92177272869264]
+	}
+	Object {
+	  $ObjectID		  6
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "76"
+	  Extents		  [904.0, 483.0]
+	  ZoomFactor		  [0.96999999999999986]
+	  Offset		  [186.52061855670098, 45.046391752577279]
+	  SceneRectInView	  [186.52061855670098, 45.046391752577279, 931.958762886598, 497.938144329897]
 	}
 	Object {
 	  $ObjectID		  7
@@ -155,9 +155,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "emilia"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu May 14 12:56:51 2020"
-  RTWModifiedTimeStamp	  511361810
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Thu May 14 16:35:53 2020"
+  RTWModifiedTimeStamp	  511374950
+  ModelVersionFormat	  "1.%<AutoIncrement:25>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1310,7 +1310,7 @@ Model {
   System {
     Name		    "model"
     Location		    [514, 192, 1518, 909]
-    Open		    off
+    Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
     ExecutionDomainType	    "Deduce"
@@ -1755,7 +1755,7 @@ Model {
       System {
 	Name			"Subsystem"
 	Location		[514, 192, 1518, 909]
-	Open			on
+	Open			off
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
 	ExecutionDomainType	"Deduce"
@@ -1987,6 +1987,7 @@ Model {
       ZOrder		      377
       VariableName	      "cost"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
       FixptAsFi		      on
       SampleTime	      "-1"
     }
@@ -1999,6 +2000,7 @@ Model {
       ZOrder		      378
       VariableName	      "power"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
       FixptAsFi		      on
       SampleTime	      "-1"
     }
@@ -2011,6 +2013,7 @@ Model {
       ZOrder		      379
       VariableName	      "temp"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
       FixptAsFi		      on
       SampleTime	      "-1"
     }
@@ -2023,6 +2026,7 @@ Model {
       ZOrder		      380
       VariableName	      "temp2"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
       FixptAsFi		      on
       SampleTime	      "-1"
     }

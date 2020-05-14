@@ -1,12 +1,12 @@
 Model {
   Name			  "model"
   Version		  10.0
-  SavedCharacterEncoding  "UTF-8"
+  SavedCharacterEncoding  "ISO-8859-2"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.20"
+    ComputedModelVersion    "1.22"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -19,7 +19,13 @@ Model {
     IsArchitectureModel	    0
     IsAUTOSARArchitectureModel 0
     NumParameterArguments   0
-    NumExternalFileReferences 1
+    NumExternalFileReferences 2
+    ExternalFileReference {
+      Reference		      "simulink/Logic and Bit\nOperations/Interval Test"
+      Path		      "model/Interval Test"
+      SID		      "95"
+      Type		      "LIBRARY_BLOCK"
+    }
     ExternalFileReference {
       Reference		      "simulink/Continuous/PID Controller"
       Path		      "model/PID Controller"
@@ -31,9 +37,9 @@ Model {
   WebScopes_FoundationPlugin "on"
   DiagnosticSuppressor	  "on"
   AnimationPlugin	  "on"
-  LogicAnalyzerPlugin	  "on"
   SLCCPlugin		  "on"
   NotesPlugin		  "on"
+  LogicAnalyzerPlugin	  "on"
   EnableAccessToBaseWorkspace on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -44,7 +50,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
+  LastSavedArchitecture	  "maci64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -54,7 +60,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [578.0, 165.0, 1004.0, 725.0]
+      Location		      [276.0, 23.0, 1004.0, 717.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -70,7 +76,7 @@ Model {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Array {
 	Type			"Simulink.EditorInfo"
@@ -81,10 +87,10 @@ Model {
 	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [904.0, 491.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-98.0, 0.0]
-	  SceneRectInView	  [-98.0, 0.0, 904.0, 491.0]
+	  Extents		  [890.0, 518.0]
+	  ZoomFactor		  [0.85630906896175307]
+	  Offset		  [-304.77342140528509, -51.635911460686287]
+	  SceneRectInView	  [-304.77342140528509, -51.635911460686287, 1039.3443585492982, 604.92177272869264]
 	}
 	Object {
 	  $ObjectID		  6
@@ -116,9 +122,9 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABiAAf//wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABrAAf//wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOuAAACKAAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOgAAACJQAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIATABlAGYAdAMAAAAA/////wAAAAAAAAAAAAAAAQAAAAEAAAA4AGMAbwBsAGwAYQBwAHMAaQBiA"
       "GwAZQBQAGEAbgBlAGwAVABvAG8AbABCAGEAcgBSAGkAZwBoAHQDAAAAAP////8AAAAAAAAAAAAAAAMAAAABAAAAOgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIAQgBvAHQAdABvAG0AAAAAAP////8AAAAAAAAAAA=="
@@ -136,11 +142,11 @@ Model {
   Creator		  "emilia"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "emilia"
+  LastModifiedBy	  "Weronika"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue May 12 23:33:54 2020"
-  RTWModifiedTimeStamp	  511227225
-  ModelVersionFormat	  "1.%<AutoIncrement:20>"
+  LastModifiedDate	  "Thu May 14 12:14:13 2020"
+  RTWModifiedTimeStamp	  511358673
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1051,6 +1057,11 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Clock
+      DisplayTime	      off
+      Decimation	      "10"
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -1120,6 +1131,22 @@ Model {
       IgnoreLimit	      off
       ZeroCross		      on
       ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Math
+      Operator		      "exp"
+      SignedPower	      on
+      OutputSignalType	      "auto"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      IntermediateResultsDataTypeStr "Inherit: Inherit via internal rule"
+      AlgorithmType	      "Newton-Raphson"
+      Iterations	      "3"
     }
     Block {
       BlockType		      Outport
@@ -1240,6 +1267,21 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
     Block {
@@ -1256,7 +1298,7 @@ Model {
   }
   System {
     Name		    "model"
-    Location		    [578, 165, 1582, 890]
+    Location		    [276, 23, 1280, 740]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1271,10 +1313,17 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "86"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "93"
+    SIDHighWatermark	    "99"
     SimulinkSubDomain	    "Simulink"
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      SID		      "94"
+      Position		      [-245, 185, -225, 205]
+      ZOrder		      381
+    }
     Block {
       BlockType		      Gain
       Name		      "Gain2"
@@ -1316,6 +1365,25 @@ Model {
       ShowName		      off
       InitialConditionSource  "external"
       InitialCondition	      "21"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Interval Test"
+      SID		      "95"
+      Ports		      [1, 1]
+      Position		      [-150, 218, -115, 252]
+      ZOrder		      384
+      LibraryVersion	      "1.453"
+      SourceBlock	      "simulink/Logic and Bit\nOperations/Interval Test"
+      SourceType	      "Interval Test"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   on
+      IntervalClosedRight     on
+      uplimit		      "16"
+      IntervalClosedLeft      on
+      lowlimit		      "8"
+      OutDataTypeStr	      "boolean"
     }
     Block {
       BlockType		      SubSystem
@@ -1431,6 +1499,17 @@ Model {
 	  DstPort		  1
 	}
       }
+    }
+    Block {
+      BlockType		      Math
+      Name		      "Math\nFunction"
+      SID		      "96"
+      Ports		      [2, 1]
+      Position		      [-205, 217, -175, 248]
+      ZOrder		      382
+      Operator		      "mod"
+      SignedPower	      off
+      OutputSignalType	      "real"
     }
     Block {
       BlockType		      Reference
@@ -1618,11 +1697,29 @@ Model {
       BlockType		      Constant
       Name		      "Set"
       SID		      "74"
-      Position		      [-70, 225, -50, 245]
+      Position		      [-75, 200, -55, 220]
       ZOrder		      372
       ForegroundColor	      "magenta"
       NamePlacement	      "alternate"
+      Value		      "16"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Set1"
+      SID		      "99"
+      Position		      [-75, 285, -55, 305]
+      ZOrder		      386
+      NamePlacement	      "alternate"
       Value		      "21"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Set2"
+      SID		      "97"
+      Position		      [-245, 270, -225, 290]
+      ZOrder		      383
+      NamePlacement	      "alternate"
+      Value		      "24"
     }
     Block {
       BlockType		      Sin
@@ -1844,6 +1941,16 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Switch
+      Name		      "Switch"
+      SID		      "98"
+      Position		      [-30, 215, 20, 255]
+      ZOrder		      385
+      Criteria		      "u2 ~= 0"
+      InputSameDT	      off
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace"
       SID		      "87"
@@ -2050,13 +2157,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      244
-      SrcBlock		      "Set"
-      SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      245
       SrcBlock		      "Integrator1"
       SrcPort		      1
@@ -2169,6 +2269,57 @@ Model {
       DstBlock		      "Product"
       DstPort		      2
     }
+    Line {
+      ZOrder		      271
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "Math\nFunction"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      272
+      SrcBlock		      "Math\nFunction"
+      SrcPort		      1
+      DstBlock		      "Interval Test"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      275
+      SrcBlock		      "Switch"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      276
+      SrcBlock		      "Set"
+      SrcPort		      1
+      Points		      [5, 0]
+      DstBlock		      "Switch"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      277
+      SrcBlock		      "Set1"
+      SrcPort		      1
+      Points		      [5, 0]
+      DstBlock		      "Switch"
+      DstPort		      3
+    }
+    Line {
+      ZOrder		      278
+      SrcBlock		      "Interval Test"
+      SrcPort		      1
+      DstBlock		      "Switch"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      279
+      SrcBlock		      "Set2"
+      SrcPort		      1
+      DstBlock		      "Math\nFunction"
+      DstPort		      2
+    }
   }
 }
 #Finite State Machines
@@ -2192,8 +2343,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
-    subviewS {
-    }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

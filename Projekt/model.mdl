@@ -1,12 +1,12 @@
 Model {
   Name			  "model"
   Version		  10.0
-  SavedCharacterEncoding  "UTF-8"
+  SavedCharacterEncoding  "ISO-8859-2"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.25"
+    ComputedModelVersion    "1.26"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -37,9 +37,9 @@ Model {
   WebScopes_FoundationPlugin "on"
   DiagnosticSuppressor	  "on"
   AnimationPlugin	  "on"
-  LogicAnalyzerPlugin	  "on"
   SLCCPlugin		  "on"
   NotesPlugin		  "on"
+  LogicAnalyzerPlugin	  "on"
   EnableAccessToBaseWorkspace on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -50,7 +50,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
+  LastSavedArchitecture	  "maci64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -60,7 +60,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [514.0, 192.0, 1004.0, 717.0]
+      Location		      [165.0, 51.0, 1004.0, 716.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -76,7 +76,7 @@ Model {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Array {
 	Type			"Simulink.EditorInfo"
@@ -87,10 +87,10 @@ Model {
 	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [904.0, 483.0]
-	  ZoomFactor		  [0.79845034808595894]
-	  Offset		  [-329.12407612639436, -60.345754957013355]
-	  SceneRectInView	  [-329.12407612639436, -60.345754957013355, 1132.1931315667457, 604.92177272869264]
+	  Extents		  [890.0, 517.0]
+	  ZoomFactor		  [0.78608496658905247]
+	  Offset		  [-329.12407612639436, -86.729727592671281]
+	  SceneRectInView	  [-329.12407612639436, -86.729727592671281, 1132.1931315667457, 657.6897180000085]
 	}
 	Object {
 	  $ObjectID		  6
@@ -133,9 +133,9 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABiAAf//wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABrAAf//wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOuAAACIAAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAOgAAACJAAAAAEAAAACAAAAAQAAAAL8AAAAAwAAAAAAAAABAAAANgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIATABlAGYAdAMAAAAA/////wAAAAAAAAAAAAAAAQAAAAEAAAA4AGMAbwBsAGwAYQBwAHMAaQBiA"
       "GwAZQBQAGEAbgBlAGwAVABvAG8AbABCAGEAcgBSAGkAZwBoAHQDAAAAAP////8AAAAAAAAAAAAAAAMAAAABAAAAOgBjAG8AbABsAGEAcABzAGkAY"
       "gBsAGUAUABhAG4AZQBsAFQAbwBvAGwAQgBhAHIAQgBvAHQAdABvAG0AAAAAAP////8AAAAAAAAAAA=="
@@ -153,11 +153,11 @@ Model {
   Creator		  "emilia"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "emilia"
+  LastModifiedBy	  "Weronika"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu May 14 16:35:53 2020"
-  RTWModifiedTimeStamp	  511374950
-  ModelVersionFormat	  "1.%<AutoIncrement:25>"
+  LastModifiedDate	  "Fri May 15 11:59:14 2020"
+  RTWModifiedTimeStamp	  511444752
+  ModelVersionFormat	  "1.%<AutoIncrement:26>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1309,7 +1309,7 @@ Model {
   }
   System {
     Name		    "model"
-    Location		    [514, 192, 1518, 909]
+    Location		    [165, 51, 1169, 767]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1324,7 +1324,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "80"
+    ZoomFactor		    "79"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "102"
     SimulinkSubDomain	    "Simulink"
@@ -1741,6 +1741,7 @@ Model {
       Amplitude		      "6"
       Bias		      "init_temp"
       Frequency		      "2*pi/24"
+      Phase		      "1.2*pi"
       SampleTime	      "0"
     }
     Block {

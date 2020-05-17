@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.27"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -60,7 +60,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [165.0, 51.0, 1004.0, 716.0]
+      Location		      [165.0, 33.0, 1004.0, 716.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -155,9 +155,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Weronika"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri May 15 11:59:14 2020"
-  RTWModifiedTimeStamp	  511444752
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Sun May 17 23:00:17 2020"
+  RTWModifiedTimeStamp	  511657196
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1092,6 +1092,15 @@ Model {
       BusSelectionMode	      off
     }
     Block {
+      BlockType		      FromWorkspace
+      VariableName	      "simulink_input"
+      OutDataTypeStr	      "Inherit: auto"
+      SampleTime	      "-1"
+      Interpolate	      on
+      ZeroCross		      off
+      OutputAfterFinalValue   "Extrapolation"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -1209,19 +1218,6 @@ Model {
       DefaultConfigurationName "Simulink.scopes.TimeScopeBlockCfg"
     }
     Block {
-      BlockType		      Sin
-      SineType		      "Time based"
-      TimeSource	      "Use simulation time"
-      Amplitude		      "1"
-      Bias		      "0"
-      Frequency		      "1"
-      Phase		      "0"
-      Samples		      "10"
-      Offset		      "0"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -1309,7 +1305,7 @@ Model {
   }
   System {
     Name		    "model"
-    Location		    [165, 51, 1169, 767]
+    Location		    [165, 33, 1169, 749]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1326,7 +1322,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "79"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "102"
+    SIDHighWatermark	    "103"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Clock
@@ -1334,6 +1330,16 @@ Model {
       SID		      "94"
       Position		      [-245, 185, -225, 205]
       ZOrder		      381
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "From\nWorkspace"
+      SID		      "103"
+      Position		      [-115, 373, -50, 397]
+      ZOrder		      387
+      VariableName	      "temperature"
+      SampleTime	      "0"
+      ZeroCross		      on
     }
     Block {
       BlockType		      Gain
@@ -1730,19 +1736,6 @@ Model {
       ZOrder		      383
       NamePlacement	      "alternate"
       Value		      "modulo"
-    }
-    Block {
-      BlockType		      Sin
-      Name		      "Sine Wave"
-      SID		      "75"
-      Ports		      [0, 1]
-      Position		      [-75, 370, -45, 400]
-      ZOrder		      364
-      Amplitude		      "6"
-      Bias		      "init_temp"
-      Frequency		      "2*pi/24"
-      Phase		      "1.2*pi"
-      SampleTime	      "0"
     }
     Block {
       BlockType		      SubSystem
@@ -2197,10 +2190,10 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      252
-      SrcBlock		      "Sine Wave"
+      ZOrder		      301
+      SrcBlock		      "From\nWorkspace"
       SrcPort		      1
-      Points		      [168, 0]
+      Points		      [173, 0]
       Branch {
 	ZOrder			251
 	Points			[236, 0; 0, -2]

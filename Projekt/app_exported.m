@@ -56,6 +56,9 @@ classdef app_exported < matlab.apps.AppBase
         Station                      matlab.ui.control.DropDown
         DateDatePickerLabel          matlab.ui.control.Label
         DateDatePicker               matlab.ui.control.DatePicker
+        DateDatePicker_2Label        matlab.ui.control.Label
+        DateDatePicker_2             matlab.ui.control.DatePicker
+        TryLongTerm                  matlab.ui.control.CheckBox
     end
 
     
@@ -63,8 +66,12 @@ classdef app_exported < matlab.apps.AppBase
         costs 
         uit 
         fig 
-        size 
+        size
+        wsize
         power
+        sum_temp
+        how_long
+       
         % Description
     end
     
@@ -86,6 +93,8 @@ classdef app_exported < matlab.apps.AppBase
             
             app.PWallLength.Visible = 'off';
             app.lengthEditField_2Label.Visible = 'off';
+            app.DateDatePicker_2.Visible = 'off';
+            app.DateDatePicker_2Label.Visible = 'off';
             
             % Set initial values for temperature
             app.RoomTempSlider.Value = 21;
@@ -93,20 +102,24 @@ classdef app_exported < matlab.apps.AppBase
             
             % Create summarization table
             app.fig = figure('Visible',"off");
-            app.fig.Position = [800 800 900 330];
+            app.fig.Position = [800 800 950 330];
             app.uit = uitable(app.fig);
-            app.uit.ColumnName = {'City', 'Room temp','Lower temp', 'Duration(h)','Size','Windows','Wall material','Insulation','Time(h)','Power(kJ)','Cost(zl)'};
-            app.uit.ColumnWidth = {'auto',70,70,70,'auto',50,'auto','auto','auto',65, 'auto'};
+            app.uit.ColumnName = {'City','Outside temp','Room temp','Lower temp', 'Duration(h)','Size (partitional)','Windows', 'W. size','Wall material','Insulation','Time(h)','Power(kJ)','Cost(zl)'};
+            app.uit.ColumnWidth = {'auto',70,70,70,70,80,50,50,'auto','auto','auto',65, 'auto'};
             app.uit.RowName = 'numbered';
-            app.uit.Position = [15 20 850 300];
+            app.uit.Position = [15 20 900 300];
             
             % Limits for picking date from weather history
-            app.DateDatePicker.Limits = [datetime([2008 1 1]) datetime('today')];
-            
+            app.DateDatePicker.Limits = [datetime([2008 1 1]) datetime('yesterday')];
+            app.DateDatePicker_2.Limits = [datetime([2008 1 1]) datetime('yesterday')];
+
         end
 
         % Button pushed function: StartButton
         function StartButtonPushed(app, event)
+            
+            app.CostAxes.cla;
+            app.PowerAxes.cla;
             
             % Set temperature
             lower_from = app.LowerFrom.Value;
@@ -148,12 +161,13 @@ classdef app_exported < matlab.apps.AppBase
             %r2d = 180/pi;
             %roof pitch
             %roof_pitch = 40/r2d; 
-            app.size = char(append(num2str(length) ,'x', num2str(width) ,'x', num2str(height)));
             
             if(length == 0 || width == 0 || height == 0)
                 errordlg('Enter room dimensions');
                 return
             end
+            
+            plength = app.PWallLength.Value;
             
             % window area
             win_num = app.WindowsNum.Value;
@@ -162,12 +176,12 @@ classdef app_exported < matlab.apps.AppBase
             % Width of windows = 1 m
             win_width = app.WindowsWidth.Value;
             win_area = win_num * win_height * win_width;
-           
+            
+            app.size = char(append(num2str(length) ,'x', num2str(width) ,'x', num2str(height), ' (' , num2str(plength), ')'));
+            app.wsize = char(append(num2str(win_height) ,'x', num2str(win_width)));
             
             % wall area 
-            plength = app.PWallLength.Value;
             wall_area = 2 * length * height + 2 * width * height - win_area - plength * height;
-
             
             
             % window resistance
@@ -254,6 +268,8 @@ classdef app_exported < matlab.apps.AppBase
             cost = 0.27/3.6e6;
             assignin('base',"cost",cost);
             
+            
+            
             %Weather
             %{ 
                 Krakow: 12566 
@@ -277,70 +293,143 @@ classdef app_exported < matlab.apps.AppBase
                 station = '12566';
             end
             
+            
             % Pick a day
             formatOut = 'yyyy-mm-dd';
             start = app.DateDatePicker.Value;
             start_day = datestr(start, formatOut);
             
-            how_long = app.DurationSlider.Value;
-            
-            if(mod(how_long,24)==0)
-                add_days = fix(how_long/24);
-            else 
-                add_days = fix(how_long/24)+1;
-            end  
-            
-            date = datenum(start_day);
-            date= addtodate(date, add_days-1, 'day');
-            end_day = datestr(date,formatOut);
-
-            key = 'db57U7X7';
-            options = weboptions('ContentType','json');
-            url = ['https://api.meteostat.net/v1/history/hourly?station=', station, '&start=', start_day, '&end=', end_day, '&time_zone=Europe/Warsaw&time_format=Y-m-d%20H:i&key=',key];
-            Current_Data = webread(url, options);
-
-            ti = [0:how_long-1]';
-            temp = [Current_Data.data.temperature]';
-            temperature = [ti,temp(1:fix(how_long),:)];
-            assignin('base', 'temperature', temperature);
-
-            % Draw plots 
-           
-            simout = sim('model','StopTime',num2str(app.DurationSlider.Value));
-            
-            % Plot of temperature outisde and inside the room
-            if(app.TempCheckBox.Value == 1)
-                app.TempAxes.Visible = 'on';
-                plot(app.TempAxes, simout.temp.Time ,simout.temp.Data);
-                hold(app.TempAxes,'on');
-                plot(app.TempAxes, simout.temp2.Time, simout.temp2.Data);
-                hold(app.TempAxes,'off');
-                app.TempAxes.YLim = [-inf,25];
-            else 
-                app.TempAxes.Visible = 'off';
-                app.TempAxes.cla;
-            end
-            
-            % Consumption cost plot
-            if(app.CostsCheckBox.Value == 1)
-                app.CostAxes.Visible = 'on';
-                plot(app.CostAxes,simout.cost.Time, simout.cost.Data);
-            else 
-                app.CostAxes.Visible = 'off';
-                app.CostAxes.cla;
-            end
-            
-            % Plot of produced energy
-            if(app.PowerCheckBox.Value == 1)
-                app.PowerAxes.Visible = 'on';
-                plot(app.PowerAxes, simout.power.Time,simout.power.Data);
+            if(app.TryLongTerm.Value == 1)
+               stop = app.DateDatePicker_2.Value;
+               end_day = datestr(stop,formatOut);
+               app.how_long = 24*(datenum(end_day) - datenum(start_day)) + 24;
             else
-                app.PowerAxes.Visible = 'off';
-                app.PowerAxes.cla;
+               app.how_long = app.DurationSlider.Value; 
+               if(mod(app.how_long,24)==0)
+                add_days = fix(app.how_long/24);
+               else 
+                add_days = fix(app.how_long/24)+1;
+               end  
+            
+               date = datenum(start_day);
+               date = addtodate(date, add_days-1, 'day');
+            
+               if(date>=datenum(datetime('today')))
+                date = datetime('yesterday');
+                end_day = datestr(date,formatOut);
+                app.how_long = 24*(datenum(end_day) - datenum(start_day)) + 24;
+                warndlg('Cannot predict the weather. Simulation shortened.', 'Warning!');
+               else
+                 end_day = datestr(date,formatOut);
+               end
             end
             
-            app.costs = simout.cost.Data(end);
-            app.power = simout.power.Data(end)/1000;
+            key = 'db57U7X7';
+            options = weboptions('ContentType','json','Timeout',15);
+               
+            temp_start = start_day;
+            temp_end = end_day;
+            next_start = app.how_long;
+            x = 0;
+            app.costs = 0;
+            app.power = 0;
+                
+            while true   
+                
+                app.how_long = next_start;
+                start_day = temp_start;
+                 
+                if app.how_long > 1344
+                    next_start = app.how_long - 1344;
+                    app.how_long = 1344;
+                end
+                
+                temp_end = datestr(addtodate(datenum(temp_start), fix(app.how_long/24), 'day'), formatOut);                
+                end_day = temp_end; 
+                
+                url = ['https://api.meteostat.net/v1/history/hourly?station=', station, '&start=', start_day, '&end=', end_day, '&time_zone=Europe/Warsaw&time_format=Y-m-d%20H:i&key=',key];
+                Current_Data = webread(url, options);
+                
+                ti = [0:app.how_long-2]';
+                temp = [Current_Data.data.temperature]';
+                temperature = [ti,temp(1:fix(app.how_long)-1,:)];
+                assignin('base', 'temperature', temperature);
+                app.sum_temp = mean(temperature,1);
+                %dlmwrite('temp.csv',temperature,'-append');
+
+
+                % Draw plots 
+                %simout = sim('model','StopTime',num2str(app.DurationSlider.Value));
+                simout = sim('model','StopTime',num2str(app.how_long));
+
+                % Plot of temperature outisde and inside the room
+                if(app.TempCheckBox.Value == 1)
+                    app.TempAxes.Visible = 'on';
+                    a = plot(app.TempAxes, simout.temp.Time + x,simout.temp.Data,'r');
+                    new_y1 = get(a,'YData');
+                    b = plot(app.TempAxes, simout.temp2.Time + x, simout.temp2.Data,'b');
+                    ax = get(b,'XData');
+                    new_x = ax ./ 24;
+                    new_y2 = get(b,'YData');
+                    delete(a); delete(b);
+                    plot(app.TempAxes,new_x,new_y1,'r');
+                    hold(app.TempAxes,'on');
+                    plot(app.TempAxes,new_x,new_y2,'b');
+                    app.TempAxes.YLim = [-inf,30];
+                else 
+                    app.TempAxes.Visible = 'off';
+                    app.TempAxes.cla;
+                end
+
+                % Consumption cost plot
+                if(app.CostsCheckBox.Value == 1)
+                    app.CostAxes.Visible = 'on';
+                    hold(app.CostAxes,'on');
+                    a = plot(app.CostAxes,simout.cost.Time + x, simout.cost.Data + app.costs, 'g');
+                    ax = get(a,'XData');
+                    new_x = ax ./ 24;
+                    new_y = get(a,'YData');
+                    delete(a);
+                    plot(app.CostAxes,new_x,new_y,'g');
+                else 
+                    app.CostAxes.Visible = 'off';
+                    app.CostAxes.cla;
+                end
+
+                % Plot of produced energy
+                if(app.PowerCheckBox.Value == 1)
+                    app.PowerAxes.Visible = 'on';
+                    hold(app.PowerAxes,'on');
+                    a = plot(app.PowerAxes, simout.power.Time + x,simout.power.Data + app.power,'m');
+                    ax = get(a,'XData');
+                    new_x = ax ./ 24;
+                    new_y = get(a,'YData');
+                    delete(a);
+                    plot(app.PowerAxes,new_x,new_y,'m');
+                else
+                    app.PowerAxes.Visible = 'off';
+                    app.PowerAxes.cla;
+                end
+                 
+                 app.costs = app.costs + simout.cost.Data(end);
+                 app.power = app.power + simout.power.Data(end);   
+                    
+                 if(app.how_long < 1344)
+                     break;         
+                 end
+                 
+                temp_start = datestr(addtodate(datenum(end_day),1,'day'), formatOut); 
+                x = x + 1344;
+                %temp = [];
+                %ti = [];
+                clear Current_Data;
+                                           
+            end
+      
+          
+            hold(app.TempAxes,'off'); 
+            hold(app.CostAxes,'off'); 
+            hold(app.PowerAxes,'off'); 
             
         end
 
@@ -369,7 +458,26 @@ classdef app_exported < matlab.apps.AppBase
 
         % Button pushed function: SaveButton
         function SaveButtonPushed(app, event)
-            time = round(app.DurationSlider.Value);
+            %{
+            start_day = datestr(app.DateDatePicker.Value);
+            how_long = app.DurationSlider.Value;
+            if(mod(how_long,24)==0)
+                add_days = fix(how_long/24);
+            else 
+                add_days = fix(how_long/24)+1;
+            end  
+            date = datenum(start_day);
+            date = addtodate(date, add_days-1, 'day');
+            
+            if(date>=datenum(datetime('today')))
+                date = datetime('yesterday');
+                end_day = datestr(date);
+                how_long = 24*(datenum(end_day) - datenum(start_day)) + 24;
+            end
+            %}
+            
+            time = round(app.how_long);
+            %time = round(app.DurationSlider.Value);
             
             % Time to set lower temperature
             if(app.LowerFrom.Value <= app.LowerTo.Value)
@@ -380,11 +488,24 @@ classdef app_exported < matlab.apps.AppBase
 	    time_diff_str = char(append(num2str(app.LowerFrom.Value),'-',num2str(app.LowerTo.Value), ' (' , num2str(time_diff), 'h)'));
 
             % Insert data into the table and refresh 
-            cData = {app.Station.Value, app.RoomTempSlider.Value, app.LowerTempSlider.Value, time_diff_str, app.size, app.WindowsNum.Value, app.WallMaterial.Value, app.Insulation.Value, time, app.power, app.costs};
+            cData = {app.Station.Value, app.sum_temp(2), app.RoomTempSlider.Value, app.LowerTempSlider.Value, time_diff_str, app.size, app.WindowsNum.Value, app.wsize, app.WallMaterial.Value, app.Insulation.Value, time, app.power, app.costs};
             old = get(app.uit, 'data');
             new = [old ; cData];
             set(app.uit, 'data', new);
             saveas(app.fig,'newout','fig');
+            
+        end
+
+        % Value changed function: TryLongTerm
+        function TryLongTermValueChanged(app, event)
+            value = app.TryLongTerm.Value;
+            if(value == 1)
+                app.DateDatePicker_2.Visible = 'on';
+                app.DateDatePicker_2Label.Visible = 'on';
+            else
+                app.DateDatePicker_2.Visible = 'off';
+                app.DateDatePicker_2Label.Visible = 'off';
+            end
         end
     end
 
@@ -402,7 +523,7 @@ classdef app_exported < matlab.apps.AppBase
             % Create TempAxes
             app.TempAxes = uiaxes(app.UIFigure);
             title(app.TempAxes, 'Temperature ')
-            xlabel(app.TempAxes, 'Time (h)')
+            xlabel(app.TempAxes, 'Time (days)')
             ylabel(app.TempAxes, 'Temp (*C)')
             app.TempAxes.BackgroundColor = [0.9412 0.9412 0.9412];
             app.TempAxes.Position = [749 532 369 214];
@@ -410,14 +531,14 @@ classdef app_exported < matlab.apps.AppBase
             % Create CostAxes
             app.CostAxes = uiaxes(app.UIFigure);
             title(app.CostAxes, 'Cost')
-            xlabel(app.CostAxes, 'Time (h)')
+            xlabel(app.CostAxes, 'Time (days)')
             ylabel(app.CostAxes, 'Expense (zl)')
             app.CostAxes.Position = [749 295 365 208];
 
             % Create PowerAxes
             app.PowerAxes = uiaxes(app.UIFigure);
             title(app.PowerAxes, 'Energy consumption')
-            xlabel(app.PowerAxes, 'Time (h)')
+            xlabel(app.PowerAxes, 'Time (days)')
             ylabel(app.PowerAxes, 'Power (J)')
             app.PowerAxes.Position = [749 46 372 211];
 
@@ -681,7 +802,7 @@ classdef app_exported < matlab.apps.AppBase
             app.ShowsummaryButton.ButtonPushedFcn = createCallbackFcn(app, @ShowsummaryButtonPushed, true);
             app.ShowsummaryButton.FontWeight = 'bold';
             app.ShowsummaryButton.FontColor = [0.2157 0.3137 0.5098];
-            app.ShowsummaryButton.Position = [605 71 116 27];
+            app.ShowsummaryButton.Position = [605 66 116 32];
             app.ShowsummaryButton.Text = 'Show summary';
 
             % Create SaveButton
@@ -689,36 +810,53 @@ classdef app_exported < matlab.apps.AppBase
             app.SaveButton.ButtonPushedFcn = createCallbackFcn(app, @SaveButtonPushed, true);
             app.SaveButton.FontWeight = 'bold';
             app.SaveButton.FontColor = [0.2157 0.3137 0.5098];
-            app.SaveButton.Position = [544 71 58 27];
+            app.SaveButton.Position = [544 66 58 32];
             app.SaveButton.Text = 'Save';
 
             % Create Weather
             app.Weather = uipanel(app.UIFigure);
             app.Weather.Title = 'Weather';
-            app.Weather.Position = [531 450 160 124];
+            app.Weather.Position = [531 391 160 183];
 
             % Create StationDropDownLabel
             app.StationDropDownLabel = uilabel(app.Weather);
             app.StationDropDownLabel.HorizontalAlignment = 'right';
-            app.StationDropDownLabel.Position = [1 65 47 22];
+            app.StationDropDownLabel.Position = [1 124 47 22];
             app.StationDropDownLabel.Text = 'Station';
 
             % Create Station
             app.Station = uidropdown(app.Weather);
             app.Station.Items = {'Cracow', 'Warsaw', 'Gdansk', 'Wroclaw', 'Poznan', ''};
-            app.Station.Position = [59 65 78 22];
+            app.Station.Position = [59 124 78 22];
             app.Station.Value = 'Cracow';
 
             % Create DateDatePickerLabel
             app.DateDatePickerLabel = uilabel(app.Weather);
             app.DateDatePickerLabel.HorizontalAlignment = 'right';
-            app.DateDatePickerLabel.Position = [6 23 27 22];
+            app.DateDatePickerLabel.Position = [6 82 27 22];
             app.DateDatePickerLabel.Text = 'Date';
 
             % Create DateDatePicker
             app.DateDatePicker = uidatepicker(app.Weather);
             app.DateDatePicker.Limits = [datetime([2008 1 1]) datetime([2020 12 31])];
-            app.DateDatePicker.Position = [41 23 109 22];
+            app.DateDatePicker.Position = [41 82 109 22];
+
+            % Create DateDatePicker_2Label
+            app.DateDatePicker_2Label = uilabel(app.Weather);
+            app.DateDatePicker_2Label.HorizontalAlignment = 'right';
+            app.DateDatePicker_2Label.Position = [8 18 27 22];
+            app.DateDatePicker_2Label.Text = 'Date';
+
+            % Create DateDatePicker_2
+            app.DateDatePicker_2 = uidatepicker(app.Weather);
+            app.DateDatePicker_2.Limits = [datetime([2008 1 1]) datetime([2020 12 31])];
+            app.DateDatePicker_2.Position = [43 18 109 22];
+
+            % Create TryLongTerm
+            app.TryLongTerm = uicheckbox(app.Weather);
+            app.TryLongTerm.ValueChangedFcn = createCallbackFcn(app, @TryLongTermValueChanged, true);
+            app.TryLongTerm.Text = 'Try long term';
+            app.TryLongTerm.Position = [14 48 92 22];
 
             % Show the figure after all components are created
             app.UIFigure.Visible = 'on';
